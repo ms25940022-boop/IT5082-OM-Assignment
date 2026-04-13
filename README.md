@@ -62,6 +62,15 @@ We compare two distinct optimization paradigms:
 
 | Method              | Result (Distance) | Execution Time (s) |
 | :------------------ | :---------------- | :----------------- |
-| Exact (ILP Subset)  | 1881.87           | 0.01               |
-| Heuristic (GA Full) | 35208.47          | 4.02               |
-| Optimal Benchmark   | 27591.00          | Historical         |
+| Exact (ILP Subset)  | 4249.22           | 18.2               |
+| Heuristic (GA Full) | 32402             | 5.1                |
+| Optimal Benchmark   | 27591             | Historical         |
+
+### **Methodological Comparison**
+
+| Feature              | Your Method (ILP)        | Partner's Method (GA)      |
+| :------------------- | :----------------------- | :------------------------- |
+| **Problem Scale**    | Small (10 Nodes)         | Large (101 Nodes)          |
+| **Solution Quality** | Global Optimum (Perfect) | Near-Optimal (Good enough) |
+| **Execution Time**   | Seconds (for 10 nodes)   | Seconds (for 101 nodes)    |
+| **Complexity**       | Exponential ($O(2^n)$)   | Polynomial/Linearized      |

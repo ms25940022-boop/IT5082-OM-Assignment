@@ -62,6 +62,6 @@ We compare two distinct optimization paradigms:
 
 | Method              | Result (Distance) | Execution Time (s) |
 | :------------------ | :---------------- | :----------------- |
-| Exact (ILP Subset)  | 0.00              | 0.00               |
+| Exact (ILP Subset)  | 1881.87           | 0.01               |
 | Heuristic (GA Full) | 35208.47          | 4.02               |
 | Optimal Benchmark   | 27591.00          | Historical         |

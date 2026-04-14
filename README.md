@@ -73,4 +73,4 @@ We compare two distinct optimization paradigms:
 | **Problem Scale**    | Small (21 Nodes)            | Large (101 Nodes)          |
 | **Solution Quality** | Global Optimum (Perfect)    | Near-Optimal (Good enough) |
 | **Execution Time**   | 299.9 Seconds (for 21 nodes)| Seconds (for 101 nodes)    |
-| **Complexity**       | Exponential ($O(2^n)$)      | Polynomial/Linearized      |
+| **Complexity**       | Exponential (`O(2^n)`)      | Polynomial/Linearized      |

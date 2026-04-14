@@ -2,18 +2,28 @@
 
 The problem addressed in this project is the **Capacitated Vehicle Routing Problem (CVRP)**, a classic NP-hard combinatorial optimization problem. It is a generalization of the Traveling Salesman Problem (TSP) where multiple vehicles must serve a set of customers from a single depot.
 
-### **The Objective**
+### **Objective Function**
 
-The goal is to minimize the **Total Euclidean Distance** traveled by the entire fleet while ensuring that all customers are visited exactly once.
+The objective is to minimize the total Euclidean distance traveled by all vehicles:
 
-### **Key Constraints**
+$$\min Z = \sum_{i \in V} \sum_{j \in V} d_{ij} x_{ij}$$
 
-Based on the **Lecture 5 & 8** principles of constrained optimization, our model enforces:
+Where $d_{ij}$ is the Euclidean distance between node $i$ and node $j$.
 
-- **Capacity Constraint:** Every vehicle has a maximum load capacity ($Q = 206$). The sum of demands for all customers on a single route cannot exceed this limit.
-- **Flow Conservation:** Each vehicle must return to the depot (Node 1) after completing its assigned route.
-- **Single Visit:** Every customer must be visited by exactly one vehicle.
-- **Subtour Elimination:** The solution must be a single connected tour per vehicle originating from the depot; isolated "loops" are mathematically prohibited via **MTZ constraints**.
+### **Decision Variable**
+
+$$x_{ij} = \begin{cases} 1, & \text{if a vehicle travels from node } i \text{ to node } j \\ 0, & \text{otherwise} \end{cases}$$
+
+### **Main Constraints**
+
+1.  **Customer Visit Constraint:** Each customer must be visited by exactly one vehicle.
+    $$\sum_{i \in V, i \neq j} x_{ij} = 1, \quad \forall j \in \{2, \dots, n\}$$
+2.  **Flow Conservation Constraint:** If a vehicle arrives at a customer node, it must also leave that node.
+    $$\sum_{i \in V, i \neq j} x_{ij} = \sum_{k \in V, k \neq j} x_{jk}, \quad \forall j \in V$$
+3.  **Capacity Constraint:** The total load carried by a vehicle must not exceed its capacity ($Q = 206$).
+4.  **MTZ Constraint (Subtour Elimination):** Prevents the formation of subtours (small isolated loops) that do not include the depot.
+    $$u_i - u_j + q_j \le Q(1 - x_{ij}), \quad \forall i, j \in \{2, \dots, n\}, i \neq j$$
+    *Where $u_i$ is the cumulative load at node $i$.*
 
 ## 2. Dataset Analysis
 

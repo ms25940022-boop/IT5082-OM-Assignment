@@ -23,7 +23,7 @@ $$x_{ij} = \begin{cases} 1, & \text{if a vehicle travels from node } i \text{ to
 3.  **Capacity Constraint:** The total load carried by a vehicle must not exceed its capacity ($Q = 206$).
 4.  **MTZ Constraint (Subtour Elimination):** Prevents the formation of subtours (small isolated loops) that do not include the depot.
     $$u_i - u_j + q_j \le Q(1 - x_{ij}), \quad \forall i, j \in \{2, \dots, n\}, i \neq j$$
-    *Where $u_i$ is the cumulative load at node $i$.*
+    _Where $u_i$ is the cumulative load at node $i$._
 
 ## 2. Dataset Analysis
 
@@ -73,14 +73,14 @@ We compare two distinct optimization paradigms:
 | Method              | Result (Distance) | Execution Time (s) |
 | :------------------ | :---------------- | :----------------- |
 | Exact (ILP Subset)  | 7540.41           | 299.9              |
-| Heuristic (GA Full) | 32402             | 5.1                |
+| Heuristic (GA Full) | 32402             | 6.1                |
 | Optimal Benchmark   | 27591             | Historical         |
 
 ### **Methodological Comparison**
 
-| Feature              | ILP                               | GA                         |
-| :------------------- | :-------------------------------- | :------------------------- |
-| **Problem Scale**    | Small (21 Nodes)                  | Large (101 Nodes)          |
-| **Solution Quality** | Global Optimum (Perfect)          | Near-Optimal (Good enough) |
-| **Execution Time**   | 299.9 Seconds (for 21 nodes)      | Seconds (for 101 nodes)    |
-| **Complexity**       | Exponential ($$\mathcal{O}(N^2)$$)| Polynomial/Linearized      |
+| Feature              | ILP                              | GA                          |
+| :------------------- | :------------------------------- | :-------------------------- |
+| **Problem Scale**    | Small (21 Nodes)                 | Large (101 Nodes)           |
+| **Solution Quality** | Global Optimum (Perfect)         | Near-Optimal (Good enough)  |
+| **Execution Time**   | 299.9 Seconds (for 21 nodes)     | 5.1 Seconds (for 101 nodes) |
+| **Complexity**       | Exponential ($\mathcal{O}(2^N)$) | Polynomial/Linearized       |
